@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HackerService.API</name>
+    </assembly>
+    <members>
+        <member name="M:HackerService.API.Controllers.NewsController.#ctor(AutoMapper.IMapper,HackerService.BLL.Contracts.IHackerNewsService)">
+            <summary>
+            News db api
+            </summary>
+            <param name="mapper"></param>
+            <param name="hackerNewsService"></param>
+        </member>
+        <member name="M:HackerService.API.Controllers.NewsController.GetNewsAsync(System.Int32)">
+            <summary>
+            Get article by id
+            </summary>
+            <param name="id">News id</param>
+            <returns>Returns finded article</returns>
+        </member>
+        <member name="M:HackerService.API.Controllers.NewsController.GetNewsListAsync">
+            <summary>
+            Get article list
+            </summary>
+            <param name="pageNumber">Page number</param>
+            <param name="pageSize">Page size</param>
+            <returns></returns>
+        </member>
+        <member name="M:HackerService.API.Controllers.TodoController.#ctor(AutoMapper.IMapper,HackerService.BLL.TodosMockProxyService)">
+            <summary>
+            Todos mock web proxy 
+            </summary>
+            <param name="mapper"></param>
+            <param name="todosMockService"></param>
+        </member>
+        <member name="M:HackerService.API.Controllers.TokenController.GenerateToken">
+            <summary>
+            Generate sample token
+            </summary>       
+            <returns>Generated token</returns>        
+        </member>
+        <member name="M:HackerService.API.Controllers.TokenController.ValidateToken(System.String)">
+            <summary>
+            Validate sample token
+            </summary>
+            <param name="token">Token for validation</param>
+            <returns>Token validation status</returns>        
+        </member>
+        <member name="T:HackerService.API.Models.News">
+            <summary>
+            News type
+            </summary>
+        </member>
+        <member name="P:HackerService.API.Models.News.id">
+            <summary>
+            News id
+            </summary>
+        </member>
+        <member name="P:HackerService.API.Models.News.title">
+            <summary>
+            News title
+            </summary>
+        </member>
+        <member name="P:HackerService.API.Models.News.type">
+            <summary>
+            News type
+            </summary>
+        </member>
+        <member name="P:HackerService.API.Models.News.time">
+            <summary>
+            time
+            </summary>
+        </member>
+        <member name="T:HackerService.API.Models.NewsType">
+            <summary>
+            News type
+            </summary>
+        </member>
+        <member name="F:HackerService.API.Models.NewsType.Story">
+            <summary>
+            Story
+            </summary>
+        </member>
+        <member name="F:HackerService.API.Models.NewsType.Job">
+            <summary>
+            job
+            </summary>
+        </member>
+        <member name="F:HackerService.API.Models.NewsType.Comment">
+            <summary>
+            comment
+            </summary>
+        </member>
+        <member name="F:HackerService.API.Models.NewsType.Poll">
+            <summary>
+            poll
+            </summary>
+        </member>
+        <member name="F:HackerService.API.Models.NewsType.Pollopt">
+            <summary>
+            pollopt
+            </summary>
+        </member>
+        <member name="T:HackerService.API.Models.Todo">
+            <summary>
+            Todo item
+            </summary>
+        </member>
+        <member name="P:HackerService.API.Models.Todo.Id">
+            <summary>
+            Todo id
+            </summary>
+        </member>
+        <member name="P:HackerService.API.Models.Todo.Title">
+            <summary>
+            Todo title
+            </summary> 
+        </member>
+        <member name="P:HackerService.API.Models.Todo.Completed">
+            <summary>
+            Todo status
+            </summary>        
+        </member>
+    </members>
+</doc>
