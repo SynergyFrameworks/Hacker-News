@@ -46,10 +46,7 @@ namespace HackerService.DAL
             return response.ResultAs<NewsEntity>();
 
         }
-        //private IEnumerable<T> ConcatSingle<T>(IEnumerable<T> source, string item)
-        //{
-        //    return source.Concat(new[] { item });
-        //}
+      
 
         public static T Deserialize<T>(string json)
         {

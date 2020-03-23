@@ -11,20 +11,20 @@
             <param name="mapper"></param>
             <param name="hackerNewsService"></param>
         </member>
-        <member name="M:HackerService.API.Controllers.NewsController.GetNewsAsync(System.Int32)">
-            <summary>
-            Get article by id
-            </summary>
-            <param name="id">News id</param>
-            <returns>Returns finded article</returns>
-        </member>
         <member name="M:HackerService.API.Controllers.NewsController.GetNewsListAsync">
             <summary>
-            Get article list
+            Get item list
             </summary>
             <param name="pageNumber">Page number</param>
             <param name="pageSize">Page size</param>
             <returns></returns>
+        </member>
+        <member name="M:HackerService.API.Controllers.NewsController.GetNewsAsync(System.Int32)">
+            <summary>
+            Get item by id
+            </summary>
+            <param name="id">News id</param>
+            <returns>Returns finded article</returns>
         </member>
         <member name="M:HackerService.API.Controllers.TodoController.#ctor(AutoMapper.IMapper,HackerService.BLL.TodosMockProxyService)">
             <summary>
@@ -32,19 +32,6 @@
             </summary>
             <param name="mapper"></param>
             <param name="todosMockService"></param>
-        </member>
-        <member name="M:HackerService.API.Controllers.TokenController.GenerateToken">
-            <summary>
-            Generate sample token
-            </summary>       
-            <returns>Generated token</returns>        
-        </member>
-        <member name="M:HackerService.API.Controllers.TokenController.ValidateToken(System.String)">
-            <summary>
-            Validate sample token
-            </summary>
-            <param name="token">Token for validation</param>
-            <returns>Token validation status</returns>        
         </member>
         <member name="T:HackerService.API.Models.News">
             <summary>

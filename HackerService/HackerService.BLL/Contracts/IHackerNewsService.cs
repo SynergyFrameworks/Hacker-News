@@ -15,7 +15,7 @@ namespace HackerService.BLL.Contracts
         //Task<News> CreateArticleAsync(News article);
 
         /// <summary>
-        /// Get article by id
+        /// Get item by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -36,7 +36,7 @@ namespace HackerService.BLL.Contracts
         //Task<bool> DeleteArticleAsync(int id);
 
         /// <summary>
-        /// Get article list 
+        /// Get item list 
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="pageSize"></param>
