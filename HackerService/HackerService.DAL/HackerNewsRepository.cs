@@ -1,5 +1,3 @@
-using System;
-using Dapper;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
@@ -15,8 +13,6 @@ using FireSharp.Response;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
 
 namespace HackerService.DAL
 {
@@ -25,21 +21,10 @@ namespace HackerService.DAL
     {
         private readonly IFirebaseConfig _config = new FirebaseConfig()
         {
-           // AuthSecret = "",
+            // AuthSecret = "",
             BasePath = "https://hacker-news.firebaseio.com/v0/",
-            //Host = ""
+            // Host = ""
         };
-        
-        public IFirebaseClient GetFirebaseClient(string node)
-        {
-            IFirebaseConfig config = new FirebaseConfig
-            {
-         //       AuthSecret = _firebaseSecret,
-                BasePath = node
-            };
-            IFirebaseClient client = new FirebaseClient(config);
-            return client;
-        }
 
 
         private IFirebaseClient _client;
@@ -49,31 +34,16 @@ namespace HackerService.DAL
         public HackerNewsRepository(IOptionsMonitor<HackerNewsRepositoryOption> options)
         {
             _options = options;
-           _client = new FirebaseClient(_config);
+            _client = new FirebaseClient(_config);
 
         }
 
 
-
-        //public IEnumerable<NewsEntity> HackerNewsFormatter(FirebaseResponse response)
-        //{
-
-        //    response.Body
-        //    //return;
-        //}
-
         public async Task<NewsEntity> GetNewsAsync(int id)
         {
             FirebaseResponse response = await _client.GetAsync($"item/{id}.json?print=pretty");
-           
-            
-            
-            return response.ResultAs<NewsEntity>();
 
-            //var client = new RestClient("https://hacker-news.firebaseio.com/v0/item/%7Bitem-id%7D.json?print=pretty");
-            //var request = new RestRequest(Method.GET);
-            //request.AddParameter("undefined", "{}", ParameterType.RequestBody);
-            //IRestResponse response = client.Execute(request);
+            return response.ResultAs<NewsEntity>();
 
         }
         //private IEnumerable<T> ConcatSingle<T>(IEnumerable<T> source, string item)
@@ -87,86 +57,48 @@ namespace HackerService.DAL
             return s.Deserialize<T>(new JsonTextReader(new StringReader(json)));
         }
 
-
         public async Task<IEnumerable<NewsEntity>> GetNewsListAsync()
         {
             FirebaseResponse response = await _client.GetAsync("showstories.json?print=pretty");
+            List<NewsEntity> news = new List<NewsEntity>();
 
-            IEnumerable<NewsEntity> news = new List<NewsEntity>();
-          
-
-
-            var hackernewslist  = response.Body.ToJson();
-            //var jcso = JsonConvert.SerializeObject(response).ToString();
-            char[] delimiterChars = {','};
+            var hackernewslist = response.Body.ToJson();
+            char[] delimiterChars = { ',' };
 
             string[] ids = hackernewslist.Split(delimiterChars);
-           // string idstemp = ids.First().Replace("\"[", string.Empty);
-           // string idstemp2 = ids.Last().Replace("]\"", string.Empty);
+            // string idstemp = ids.First().Replace("\"[", string.Empty);
+            // string idstemp2 = ids.Last().Replace("]\"", string.Empty);
 
-
-
-            //var count = ids.Length;
-            foreach (string el in ids)
+            var tasks = ids.Select(async item =>
             {
-                //if (ids[0] == ids.First()) { }
-                //if (ids[count] == ids.Last()) { }
-                var temp = el.Replace("\"[", string.Empty);
+                var temp = item.Replace("\"[", string.Empty);
                 var temp2 = temp.Replace("]\"", string.Empty);
 
+                // some pre stuff
                 FirebaseResponse itemresponse = await _client.GetAsync($"item/{temp2}.json?print=pretty");
-                var test = JsonConvert.SerializeObject(itemresponse.Body);
+                var entity = itemresponse.ResultAs<NewsEntity>();
 
-                var Model = JsonConvert.DeserializeObject<NewsEntity>(test);
-                //JObject o = JObject.Parse(itemresponse.Body);
-                //ConcatSingle<NewsEntity>(news, JsonConvert.SerializeObject(itemresponse).ToString());
-                //news =  Deserialize<NewsEntity>(itemresponse.Body);
-                IEnumerable<NewsEntity> newsItem = new List<NewsEntity>();
+                news.Add(entity);
+                // some post stuff
+            });
+            await Task.WhenAll(tasks);
+            
 
-
-                news.Concat(newsItem);
-                
-                
-                //foreach (var newsEntity in news.Append<NewsEntity>( newsItems)) 
-
-
-
-
-                // TODO - [itemresponse] take this data and insert into enumeration of type NewsEntity
-
-
-
-            }
-
-            //using (var s = response.Body.Length())
-            //{
-            //    using (var sr = new StreamReader(s))
-            //    {
-            //        var contributorsAsJson = sr.ReadToEnd();
-            //        var contributors = JsonConvert.DeserializeObject<List<Contributor>>(contributorsAsJson);
-            //        //contributors.ForEach(Console.WriteLine);
-            //    }
-
-            //}
-
-
-
-            return news; //response.ResultAs<IEnumerable<NewsEntity>>();
-
+            return news; 
         }
 
         public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = new CancellationToken())
         {
-      
-                try
-                { 
-                  //  EventStreamResponse response = await _client.OnAsync("chat", (sender, args);
-                  return await Task.FromResult(HealthCheckResult.Healthy());
-                }
-                catch
-                {
-                    return await Task.FromResult(HealthCheckResult.Unhealthy());
-                }
+
+            try
+            {
+                //  EventStreamResponse response = await _client.OnAsync("chat", (sender, args);
+                return await Task.FromResult(HealthCheckResult.Healthy());
+            }
+            catch
+            {
+                return await Task.FromResult(HealthCheckResult.Unhealthy());
+            }
 
         }
     }
