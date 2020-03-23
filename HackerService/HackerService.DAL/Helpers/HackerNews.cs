@@ -104,8 +104,8 @@ namespace HackerService.DAL.Helpers
 
 
     //var hackerNews = new HackerNews();
-    //hackerNews.GetTopStories();
 
+    //hackerNews.GetTopStories();
     //var stories = hackerNews.GetTopStories().Take(3).Select(hackerNews.GetStoryById).ToList();
     //var user = hackerNews.GetUserById("dhouston");
     //var comment = hackerNews.GetCommentById(2921983);

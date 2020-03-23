@@ -96,11 +96,11 @@ namespace HackerService.DAL
           
 
 
-            var hackernewsarray  = response.Body.ToJson();
+            var hackernewslist  = response.Body.ToJson();
             //var jcso = JsonConvert.SerializeObject(response).ToString();
             char[] delimiterChars = {','};
 
-            string[] ids = hackernewsarray.Split(delimiterChars);
+            string[] ids = hackernewslist.Split(delimiterChars);
            // string idstemp = ids.First().Replace("\"[", string.Empty);
            // string idstemp2 = ids.Last().Replace("]\"", string.Empty);
 
@@ -115,9 +115,11 @@ namespace HackerService.DAL
                 var temp2 = temp.Replace("]\"", string.Empty);
 
                 FirebaseResponse itemresponse = await _client.GetAsync($"item/{temp2}.json?print=pretty");
-                var test = JsonConvert.SerializeObject(itemresponse);
+                var test = JsonConvert.SerializeObject(itemresponse.Body);
+
+                var Model = JsonConvert.DeserializeObject<NewsEntity>(test);
                 //JObject o = JObject.Parse(itemresponse.Body);
-                 //ConcatSingle<NewsEntity>(news, JsonConvert.SerializeObject(itemresponse).ToString());
+                //ConcatSingle<NewsEntity>(news, JsonConvert.SerializeObject(itemresponse).ToString());
                 //news =  Deserialize<NewsEntity>(itemresponse.Body);
                 IEnumerable<NewsEntity> newsItem = new List<NewsEntity>();
 
