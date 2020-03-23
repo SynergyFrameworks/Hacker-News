@@ -1,0 +1,72 @@
+<table class="table"  >  <!-- *ngIf="news$ | async as news" -->
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">id</th>
+      <th scope="col">title</th>
+      <th scope="col">text</th>
+      <th scope="col">url</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr>
+      <th scope="row">{{ counter }}</th>  <!--  *ngFor="let new of news"  -->
+      <td>{{ new.id }}</td>
+      <td>{{ new.title }}</td>
+      <td>{{ new.text }}</td>
+      <td>{{ new.url }}</td>
+    </tr>
+
+    <!--  Temp Data  -->
+    <tr>
+      <th scope="row">2</th>
+      <td>2583423</td>
+      <td>news Article One</td>
+      <td>Content</td>
+      <td>http://google.com</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>286425</td>
+      <td>news Article One</td>
+      <td>Content</td>
+      <td>http://google.com</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>27836</td>
+      <td>news Article One</td>
+      <td>Content</td>
+      <td>http://google.com</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>1343573</td>
+      <td>news Article One</td>
+      <td>Content</td>
+      <td>http://google.com</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>4657232</td>
+      <td>news Article One</td>
+      <td>Content</td>
+      <td>http://google.com</td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>25667878</td>
+      <td>news Article One</td>
+      <td>Content</td>
+      <td>http://google.com</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="alert alert-danger"
+     *ngIf="errorMessage$ | async as errorMessage">
+  {{ errorMessage }}
+</div>
+
+

@@ -39,8 +39,7 @@ namespace HackerService.API
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
-            var appSettingsSection = Configuration.GetSection("AppSettings");
+        { var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
             var appSettings = appSettingsSection.Get<AppSettings>();
 
@@ -115,6 +114,7 @@ namespace HackerService.API
                 x.SaveToken = true;
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
+                    
                     ValidateAudience = false,
                     ValidateIssuer = false,
                     ValidateIssuerSigningKey = true,

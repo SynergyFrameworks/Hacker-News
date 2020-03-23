@@ -36,7 +36,7 @@ namespace HackerService.API.Swagger
                 },
                 License = new OpenApiLicense()
                 {
-                    Name = "MIT Hacker News",
+                    Name = "Hacker News",
                     Url = new Uri("https://github.com/HackerNews/API")
                 }
             };

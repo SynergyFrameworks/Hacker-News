@@ -4,7 +4,8 @@ using HackerService.BLL.Contracts;
 using HackerService.BLL.Models;
 using HackerService.DAL.Contract;
 using HackerService.DAL.Models;
-using System;
+using News = HackerService.BLL.Models.News;
+
 
 namespace HackerService.BLL.Tests.Helpers
 {

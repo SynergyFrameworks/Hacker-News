@@ -3,7 +3,8 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">NextTech Hacker News</a>
+    <a class="navbar-brand" [routerLink]="['/']">  <img src="../../assets/img/nextech-logo.svg" alt="Nextech" class="logo"></a>
+      Hacker News
       <button
         class="navbar-toggler"
         type="button"
@@ -19,6 +20,19 @@
         class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
         [ngClass]="{ show: isExpanded }"
       >
+
+
+      <form action="#" class="search">
+        <input type="text" class="search__input" placeholder="Search Hacker News">
+        <button class="search__button">
+            <svg class="search__icon">
+                <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+            </svg>
+        </button>
+    </form>
+
+
+
         <ul class="navbar-nav flex-grow">
           <li
             class="nav-item"
@@ -27,12 +41,12 @@
           >
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
-      <!--     <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
+         <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/hackernews']"
+              >News</a
             >
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+         <!--   <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
               >Fetch data</a
             >
@@ -40,5 +54,39 @@
         </ul>
       </div>
     </div>
+
+
+    <!-- <img src="img/logo.png" alt="trillo logo" class="logo">
+
+    <form action="#" class="search">
+        <input type="text" class="search__input" placeholder="Search hotels">
+        <button class="search__button">
+            <svg class="search__icon">
+                <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+            </svg>
+        </button>
+    </form> -->
+
+    <!-- <nav class="user-nav">
+        <div class="user-nav__icon-box">
+            <svg class="user-nav__icon">
+                <use xlink:href="img/sprite.svg#icon-bookmark"></use>
+            </svg>
+            <span class="user-nav__notification">7</span>
+        </div>
+        <div class="user-nav__icon-box">
+            <svg class="user-nav__icon">
+                <use xlink:href="img/sprite.svg#icon-chat"></use>
+            </svg>
+            <span class="user-nav__notification">13</span>
+        </div>
+        <div class="user-nav__user">
+            <img src="img/user.jpg" alt="User photo" class="user-nav__user-photo">
+            <span class="user-nav__user-name">Jonas</span>
+        </div>
+    </nav> -->
+
+
+
   </nav>
 </header>

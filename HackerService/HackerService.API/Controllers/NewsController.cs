@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace HackerService.API.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [Produces("application/json")]
     [Route("api/v{version:apiVersion}/news")]
     [ApiVersion("1.0")]

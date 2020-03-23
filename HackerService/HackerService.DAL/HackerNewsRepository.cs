@@ -1,19 +1,21 @@
 using Dapper;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using FireSharp;
 using HackerService.DAL.Contract;
 using HackerService.DAL.Models;
 using FireSharp.Config;
+using FireSharp.Extensions;
 using FireSharp.Interfaces;
 using FireSharp.Response;
-using RestSharp;
+using System.IO;
+using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace HackerService.DAL
 {
@@ -22,20 +24,22 @@ namespace HackerService.DAL
     {
         private readonly IFirebaseConfig _config = new FirebaseConfig()
         {
-            AuthSecret = "",
+           // AuthSecret = "",
             BasePath = "https://hacker-news.firebaseio.com/v0/",
-            /// TODO BasePath = "https://hacker-news.firebaseio.com/v0/showstories.json",
-            ///
-            //loadItem(){
-            //this.http.get(`https://hacker- 
-            //news.firebaseio.com/v0/item/${this.id}.json?print=pretty`).subscribe(data => {
-            //    this.items.push(data as any[]);
-            //  })
-            //}  
-            Host = ""
+            //Host = ""
         };
-       // //https://hacker-news.firebaseio.com/v0/item/2921983.json?print=pretty
-        //beststories.json?print=pretty&orderBy="$key"&limitToFirst=5
+        
+        public IFirebaseClient GetFirebaseClient(string node)
+        {
+            IFirebaseConfig config = new FirebaseConfig
+            {
+         //       AuthSecret = _firebaseSecret,
+                BasePath = node
+            };
+            IFirebaseClient client = new FirebaseClient(config);
+            return client;
+        }
+
 
         private IFirebaseClient _client;
 
@@ -48,27 +52,21 @@ namespace HackerService.DAL
 
         }
 
-        //public async Task<NewsEntity> CreateArticleAsync(NewsEntity news)
+
+
+        //public IEnumerable<NewsEntity> HackerNewsFormatter(FirebaseResponse response)
         //{
 
-        //    _client = new FirebaseClient(_config);
-        //    if (news.id == Guid.Empty.ToString())
-        //    {
-        //        news.id = Guid.NewGuid().ToString();
-        //    }
-        //    var now = DateTime.UtcNow;
-        //    news.time = now;
-
-
-        //    _client = new FirebaseClient(_config); 
-        //    await _client.SetAsync("todos/set", news);
-        //    return news;
-
+        //    response.Body
+        //    //return;
         //}
 
         public async Task<NewsEntity> GetNewsAsync(int id)
         {
             FirebaseResponse response = await _client.GetAsync($"item/{id}.json?print=pretty");
+           
+            
+            
             return response.ResultAs<NewsEntity>();
 
             //var client = new RestClient("https://hacker-news.firebaseio.com/v0/item/%7Bitem-id%7D.json?print=pretty");
@@ -76,29 +74,66 @@ namespace HackerService.DAL
             //request.AddParameter("undefined", "{}", ParameterType.RequestBody);
             //IRestResponse response = client.Execute(request);
 
+        }
+        //private IEnumerable<T> ConcatSingle<T>(IEnumerable<T> source, string item)
+        //{
+        //    return source.Concat(new[] { item });
+        //}
 
-
+        public static T Deserialize<T>(string json)
+        {
+            Newtonsoft.Json.JsonSerializer s = new JsonSerializer();
+            return s.Deserialize<T>(new JsonTextReader(new StringReader(json)));
         }
 
-        //public async Task<bool> UpdateArticleAsync(NewsEntity news)
-        //{
-        //    news.time = DateTime.UtcNow;
-        //    var response = await _client.UpdateAsync("todos/set", news);
-        //    var article = response.ResultAs<NewsEntity>(); //The response will contain the data written
-
-        //    return article != null;
-        //}
-
-        //public async Task<bool> DeleteArticleAsync(Guid id)
-        //{
-        //    var response = await _client.DeleteAsync("todos"); //Deletes collection
-        //  return response.StatusCode == HttpStatusCode.OK;
-        //}
 
         public async Task<IEnumerable<NewsEntity>> GetNewsListAsync()
         {
-            FirebaseResponse response = await _client.GetAsync("topstories?print=pretty");
-            return response.ResultAs<IEnumerable<NewsEntity>>();
+            FirebaseResponse response = await _client.GetAsync("showstories.json?print=pretty");
+
+            IEnumerable<NewsEntity> news = new List<NewsEntity>();
+            var hackernewsarray  = response.Body.ToJson();
+            //var jcso = JsonConvert.SerializeObject(response).ToString();
+            char[] delimiterChars = {','};
+
+            string[] ids = hackernewsarray.Split(delimiterChars);
+           // string idstemp = ids.First().Replace("\"[", string.Empty);
+           // string idstemp2 = ids.Last().Replace("]\"", string.Empty);
+
+            //var count = ids.Length;
+            foreach (string el in ids)
+            {
+                //if (ids[0] == ids.First()) { }
+                //if (ids[count] == ids.Last()) { }
+                var temp = el.Replace("\"[", string.Empty);
+                var temp2 = temp.Replace("]\"", string.Empty);
+
+                FirebaseResponse itemresponse = await _client.GetAsync($"item/{temp2}.json?print=pretty");
+                //var test = JsonConvert.SerializeObject(itemresponse);
+                //JObject o = JObject.Parse(itemresponse.Body);
+                //  ConcatSingle<NewsEntity>(news, JsonConvert.SerializeObject(itemresponse).ToString());
+                //news =  Deserialize<NewsEntity>(itemresponse.Body);
+
+                // TODO - [itemresponse] take this data and insert into enumeration of type NewsEntity
+
+
+
+            }
+
+            //using (var s = response.Body.Length())
+            //{
+            //    using (var sr = new StreamReader(s))
+            //    {
+            //        var contributorsAsJson = sr.ReadToEnd();
+            //        var contributors = JsonConvert.DeserializeObject<List<Contributor>>(contributorsAsJson);
+            //        //contributors.ForEach(Console.WriteLine);
+            //    }
+
+            //}
+
+
+
+            return news; //response.ResultAs<IEnumerable<NewsEntity>>();
 
         }
 

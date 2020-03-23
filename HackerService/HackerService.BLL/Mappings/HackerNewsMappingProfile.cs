@@ -1,7 +1,7 @@
 using AutoMapper;
-using HackerService.BLL.Models;
 using HackerService.DAL.Models;
-using System;
+using News = HackerService.BLL.Models.News;
+using NewsType = HackerService.BLL.Models.NewsType;
 
 namespace HackerService.BLL.Mappings
 {
@@ -13,13 +13,23 @@ namespace HackerService.BLL.Mappings
                 .ForMember(d => d.id, opt => opt.MapFrom(src => src.id.ToString()))
                 .ForMember(d => d.title, opt => opt.MapFrom(src => src.title))
                 .ForMember(d => d.type, opt => opt.MapFrom(src => (int) src.type))
+                .ForMember(d => d.text, opt => opt.MapFrom(src => src.text))
+                .ForMember(d => d.url, opt => opt.MapFrom(src => src.url))
+                .ForMember(d => d.score, opt => opt.MapFrom(src => src.score))
                 .ForMember(d => d.time, opt => opt.MapFrom(src => src.time));
 
 
+
+
+
             CreateMap<NewsEntity, News>()
-                .ForMember(d => d.id, opt => opt.MapFrom(src => Guid.Parse(src.id)))
+                .ForMember(d => d.id, opt => opt.MapFrom(src => src.id.ToString()))
                 .ForMember(d => d.title, opt => opt.MapFrom(src => src.title))
                 .ForMember(d => d.type, opt => opt.MapFrom(src => (NewsType) src.type))
+                .ForMember(d => d.text, opt => opt.MapFrom(src => src.text))
+                .ForMember(d => d.url, opt => opt.MapFrom(src => src.url))
+                .ForMember(d => d.by, opt => opt.MapFrom(src => src.by))
+                .ForMember(d => d.score, opt => opt.MapFrom(src => src.score))
                 .ForMember(d => d.time, opt => opt.MapFrom(src => src.time));
 
         }

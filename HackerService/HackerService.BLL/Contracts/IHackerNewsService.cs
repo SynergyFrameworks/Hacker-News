@@ -1,5 +1,5 @@
-using HackerService.BLL.Models;
-using System;
+using News = HackerService.BLL.Models;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -19,7 +19,7 @@ namespace HackerService.BLL.Contracts
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<News> GetNewsAsync(int id);
+        Task<News.News> GetNewsAsync(int id);
 
         /// <summary>
         /// Update article parameters
@@ -33,7 +33,7 @@ namespace HackerService.BLL.Contracts
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //Task<bool> DeleteArticleAsync(Guid id);
+        //Task<bool> DeleteArticleAsync(int id);
 
         /// <summary>
         /// Get article list 
@@ -41,6 +41,6 @@ namespace HackerService.BLL.Contracts
         /// <param name="pageNumber"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        Task<IEnumerable<News>> GetNewsListAsync();
+        Task<IEnumerable<News.News>> GetNewsListAsync();
     }
 }
