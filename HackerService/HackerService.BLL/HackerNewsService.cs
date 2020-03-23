@@ -22,14 +22,14 @@ namespace HackerService.BLL
 
         public async Task<News> GetNewsAsync(int id)
         {
-            var article = await HackerNewsRepo.GetNewsAsync(id);
-            return _mapper.Map<News>(article);
+            var item = await HackerNewsRepo.GetNewsAsync(id);
+            return _mapper.Map<News>(item);
         }
 
         public async Task<IEnumerable<News>> GetNewsListAsync()
         {
-            var articles = await HackerNewsRepo.GetNewsListAsync();
-            return _mapper.Map<IEnumerable<News>>(articles);
+            var item = await HackerNewsRepo.GetNewsListAsync();
+            return _mapper.Map<IEnumerable<News>>(item);
         }
 
       

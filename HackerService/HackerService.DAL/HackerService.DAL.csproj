@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\PollPart.cs" />
+    <Compile Remove="Models\Polls.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Models\PollPart.cs" />
+    <None Include="Models\Polls.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.30" />
     <PackageReference Include="FireSharp" Version="2.0.4" />
     <PackageReference Include="FireSharp.Serialization.JsonNet" Version="1.1.0" />
