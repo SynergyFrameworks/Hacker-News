@@ -3,7 +3,7 @@
 
 <h2> 1: OpenAPI C# .NET CORE 3.1 HACKER NEWS Service </h2>
 
-https://hackerserviceapi20200323192500.azurewebsites.net/swagger/index.html
+https://hackerserviceapi20200323192500.azurewebsites.net/swagger/
 
 <h2> 2: HACKER NEWS Angular Client: NOT COMPLETED  </h2>
 
