@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HackerNewsService } from '../service/hackernews.service';
-import { Subject, BehaviorSubject, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Subject, BehaviorSubject, combineLatest, EMPTY } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 
 @Component({
@@ -18,20 +18,20 @@ export class HackerNewsComponent implements OnInit {
   private newsSelectedSubject = new BehaviorSubject<number>(0);
   newSelectedAction$ = this.newsSelectedSubject.asObservable();
     counter: number;
-/*   news$ = combineLatest([
-    this.hackerNewsService.selectedNews$,
+  news$ = combineLatest([
+    this.hackerNewsService.hackerNews$,
     this.newSelectedAction$
   ])
     .pipe(
-      // map(([news, selectedNewsId]) =>
-      //   news.filter(news =>
-      //     selectedNewsId ? news.id === selectedNewsId : true
-      //   )),
-      // catchError(err => {
-      //   this.errorMessageSubject.next(err);
-      //   return EMPTY;
-      // })
-    ); */
+      map(([news, selectedNewsId]) =>
+        news.filter(newsx =>
+          selectedNewsId ? newsx.id === selectedNewsId : true
+        )),
+      catchError(err => {
+        this.errorMessageSubject.next(err);
+        return EMPTY;
+      })
+    );
 
 
 
