@@ -5,13 +5,13 @@
 
 https://hackerserviceapi20200323192500.azurewebsites.net/swagger/index.html
 
-2: HACKER NEWS Angular Client: NOT COMPLETED
+<h2> 2: HACKER NEWS Angular Client: NOT COMPLETED  </h2>
 
 https://hackernewsclient20200324083849.azurewebsites.net/
 
 IOC & DI Example
 
-References
+<h3>References</h3>
 
 https://github.com/HackerNews/API
 
