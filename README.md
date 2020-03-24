@@ -7,6 +7,10 @@ References
 
 https://github.com/HackerNews/API
 
+https://hackernews.api-docs.io/v0/overview/introduction
+
+Service Base URI
+
 https://hacker-news.firebaseio.com/v0/
 
-https://hackernews.api-docs.io/v0/overview/introduction
+
