@@ -61,21 +61,21 @@ namespace HackerService.DAL
         private string ApiPathBuilder(int apiRoute)
         {
 
-            string route = "showstories.json?print=pretty";
+            string route = "topstories.json?print=pretty";
 
             switch (apiRoute)
             {
                 case 1:
-                    route = "showstories.json?print=pretty"; 
+                    route = "topstories.json?print=pretty"; 
                     break;
                 case 2:
-                    route = "topstories.json?print=pretty";
+                    route = "showstories.json?print=pretty";
                     break;
                 case 3:
                     route = "jobstories.json?print=pretty";
                     break;
                 default:
-                    route = "showstories.json?print=pretty";
+                    route = "topstories.json?print=pretty";
                     break;
             }
 
