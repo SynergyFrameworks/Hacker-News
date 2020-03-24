@@ -17,7 +17,7 @@ export class HackerNewsComponent implements OnInit {
 
   private newsSelectedSubject = new BehaviorSubject<number>(0);
   newSelectedAction$ = this.newsSelectedSubject.asObservable();
-
+    counter: number;
 /*   news$ = combineLatest([
     this.hackerNewsService.selectedNews$,
     this.newSelectedAction$
