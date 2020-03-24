@@ -1,7 +1,7 @@
 using AutoMapper;
 using HackerService.DAL.Models;
 using News = HackerService.BLL.Models.News;
-using NewsType = HackerService.BLL.Models.NewsType;
+
 
 namespace HackerService.BLL.Mappings
 {

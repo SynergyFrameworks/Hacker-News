@@ -1,11 +1,12 @@
 using AutoFixture;
 using HackerService.BLL.Models;
+using HackerService.DAL.Models;
 
 namespace HackerService.BLL.Tests.Helpers
 {
     public static class Fixtures
     {
-        public static News ArticleFixture(string itemTitle = null, NewsType newsType = 0)
+        public static News ItemFixture(string itemTitle = null, NewsType newsType = 0)
         {
             var fixture = new Fixture();
 
@@ -18,7 +19,7 @@ namespace HackerService.BLL.Tests.Helpers
 
             if (newsType > 0)
             {
-         //       news.With(s => s.type, (DAL.Models.NewsType) newsType);
+         //       news.With(s => s.type, (NewsType)newsType);
             }
 
             return news.Create();

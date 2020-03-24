@@ -11,18 +11,8 @@ namespace HackerService.API.Helper
         private Dictionary<string, string> defaultHeaderMap = new Dictionary<string, string>();
         Helpers()
         {
-   
-            //string[] arr = { "car", "bike", "truck", "bus" };
-            //foreach (var t in arr)
-            //{
-            //    Console.Write("{0} ", t);
-            //}
-            //Console.WriteLine();
-            //var res = Array.Find(arr, ele => ele.StartsWith("t",
-            //    StringComparison.Ordinal));
 
         }
-
 
         public void addDefaultHeader(string key, string value)
         {

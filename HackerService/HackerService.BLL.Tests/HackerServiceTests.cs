@@ -11,43 +11,43 @@ namespace HackerService.BLL.Tests
     public class HackerNewsServiceTests
     {
         //[Theory]
-        //[InlineData("Story", NewsType.story)]
-        //[InlineData("Comment", NewsType.comment)]
-        //[InlineData("Poll", NewsType.poll)]
-        //public void CreateNews_Test(string articleTitle, NewsType articleType)
+        //[InlineData("Story", NewsType.Story)]
+        //[InlineData("Comment", NewsType.Comment)]
+        //[InlineData("Poll", NewsType.Poll)]
+        //public void CreateNews_Test(string itemTitle, NewsType itemType)
         //{
         //    //Arrange
         //    var fixture = new Fixture();
-        //    var article = Fixtures.ArticleFixture(articleTitle, articleType);
+        //    var item = Fixtures.ItemFixture(itemTitle, itemType);
         //    var mapper = Mapper.GetAutoMapper();
-        //    var newsRepoMoq = Moqs.NewsReposirotyMoq(mapper.Map<NewsEntity>(article));
+        //    var newsRepoMoq = Moqs.NewsReposirotyMoq(mapper.Map<NewsEntity>(item));
         //    var newsSrc = new HackerNewsService(mapper, newsRepoMoq.Object);
 
         //    //Act
-        //    var news = newsSrc.CreateArticleAsync(article);
+        //    var result = newsSrc.GetNewsListAsync(fixture.Create<Int32>()).Result;
 
         //    //Assert
-        //    var actual = JsonConvert.SerializeObject(article);
-        //    var expected = JsonConvert.SerializeObject(news);
+        //    var actual = JsonConvert.SerializeObject(item);
+        //    var expected = JsonConvert.SerializeObject(result);
         //    Assert.Equal(expected.Trim(), actual.Trim());
         //}
 
         [Fact]
-        public void GetArticle_Test()
+        public void GetItem_Test()
         {
             //Arrange
             var fixture = new Fixture();
 
-            var article = Fixtures.ArticleFixture();
+            var item = Fixtures.ItemFixture();
             var mapper = Mapper.GetAutoMapper();
-            var newsRepoMoq = Moqs.NewsReposirotyMoq(mapper.Map<NewsEntity>(article));
+            var newsRepoMoq = Moqs.NewsReposirotyMoq(mapper.Map<NewsEntity>(item));
             var newsSvc = new HackerNewsService(mapper, newsRepoMoq.Object);
 
             //Act
             var result = newsSvc.GetNewsAsync(fixture.Create<Int32>()).Result;
 
             //Assert
-            var actual = JsonConvert.SerializeObject(article);
+            var actual = JsonConvert.SerializeObject(item);
             var expected = JsonConvert.SerializeObject(result);
             Assert.Equal(expected.Trim(), actual.Trim());
         }
