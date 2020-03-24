@@ -5,9 +5,9 @@
 
 https://hackerserviceapi20200323192500.azurewebsites.net/swagger/index.html
 
-2: HACKER NEWS Angular Client
+2: HACKER NEWS Angular Client: NOT COMPLETED
 
-URL TBD 
+https://hackernewsclient20200324083849.azurewebsites.net/
 
 IOC & DI Example
 
