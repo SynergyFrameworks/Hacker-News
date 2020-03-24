@@ -11,12 +11,16 @@
             <param name="mapper"></param>
             <param name="hackerNewsService"></param>
         </member>
-        <member name="M:HackerService.API.Controllers.NewsController.GetNewsListAsync">
+        <member name="M:HackerService.API.Controllers.NewsController.GetNewsListAsync(System.Int32)">
             <summary>
-            Get item list
+              Get Hacker News item list by route    |
+              1: showstories      |
+              2: topstories       |
+              3: jobstories
             </summary>
             <param name="pageNumber">Page number</param>
             <param name="pageSize">Page size</param>
+            <param name="apiRoute">API Route</param>
             <returns></returns>
         </member>
         <member name="M:HackerService.API.Controllers.NewsController.GetNewsAsync(System.Int32)">
@@ -24,7 +28,7 @@
             Get item by id
             </summary>
             <param name="id">News id</param>
-            <returns>Returns finded article</returns>
+            <returns>Returns found Item</returns>
         </member>
         <member name="M:HackerService.API.Controllers.TodoController.#ctor(AutoMapper.IMapper,HackerService.BLL.TodosMockProxyService)">
             <summary>

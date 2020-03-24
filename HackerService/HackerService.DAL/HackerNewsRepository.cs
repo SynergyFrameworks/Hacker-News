@@ -12,6 +12,9 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+using Google.Protobuf.WellKnownTypes;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using Newtonsoft.Json;
 
 namespace HackerService.DAL
@@ -54,9 +57,39 @@ namespace HackerService.DAL
             return s.Deserialize<T>(new JsonTextReader(new StringReader(json)));
         }
 
-        public async Task<IEnumerable<NewsEntity>> GetNewsListAsync()
+
+        private string ApiPathBuilder(int apiRoute)
         {
-            FirebaseResponse response = await _client.GetAsync("showstories.json?print=pretty");
+
+            string route = "showstories.json?print=pretty";
+
+            switch (apiRoute)
+            {
+                case 1:
+                    route = "showstories.json?print=pretty"; 
+                    break;
+                case 2:
+                    route = "topstories.json?print=pretty";
+                    break;
+                case 3:
+                    route = "jobstories.json?print=pretty";
+                    break;
+                default:
+                    route = "showstories.json?print=pretty";
+                    break;
+            }
+
+            return route;
+
+
+
+
+        }
+        public async Task<IEnumerable<NewsEntity>> GetNewsListAsync(int apiRoute)
+        {
+
+            
+            FirebaseResponse response = await _client.GetAsync(ApiPathBuilder(apiRoute));
             List<NewsEntity> news = new List<NewsEntity>();
 
             var hackernewslist = response.Body.ToJson();

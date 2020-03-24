@@ -10,6 +10,6 @@ namespace HackerService.DAL.Contract
 
         Task<NewsEntity> GetNewsAsync(int id);
         
-        Task<IEnumerable<NewsEntity>> GetNewsListAsync();
+        Task<IEnumerable<NewsEntity>> GetNewsListAsync(int apiRoute);
     }
 }

@@ -39,20 +39,21 @@ namespace HackerService.API.Controllers
         /// </summary>
         /// <param name="pageNumber">Page number</param>
         /// <param name="pageSize">Page size</param>
+        /// <param name="apiRoute">API Route</param>
         /// <returns></returns>
         [HttpGet()]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(IEnumerable<News>), Description = "Returns found articles array")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, Description = "Missing or invalid pageNumber or pageSize")]
         [SwaggerResponse((int)HttpStatusCode.InternalServerError, Description = "Unexpected error")]
-        public async Task<IActionResult> GetNewsListAsync() //[FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 50
+        public async Task<IActionResult> GetNewsListAsync([FromQuery] int apiRoute = 1) //[FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 50
         {
-            //    if (pageNumber != 0 && pageSize != 0)
-            //    {
-            var result = await _hackerNewsService.GetNewsListAsync();
+            if (apiRoute != 0 && apiRoute != 0)
+            {
+                var result = await _hackerNewsService.GetNewsListAsync(apiRoute);
             return Ok(result);
-            //    }
+            }
 
-            //    return BadRequest();
+            return BadRequest();
         }
 
         /// <summary>

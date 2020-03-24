@@ -8,11 +8,11 @@ namespace HackerService.BLL.Contracts
     public interface IHackerNewsService
     {
         /// <summary>
-        /// Create a new article
+        /// Create a new item
         /// </summary>
-        /// <param name="article/param>
+        /// <param name="item/param>
         /// <returns></returns>
-        //Task<News> CreateArticleAsync(News article);
+        //Task<News> CreateItemAsync(News item);
 
         /// <summary>
         /// Get item by id
@@ -22,18 +22,18 @@ namespace HackerService.BLL.Contracts
         Task<News.News> GetNewsAsync(int id);
 
         /// <summary>
-        /// Update article parameters
+        /// Update item parameters
         /// </summary>
-        /// <param name="article/param>
+        /// <param name="item/param>
         /// <returns></returns>
-        //Task<bool> UpdateArticleAsync(News article);
+        //Task<bool> UpdateItemAsync(News item);
 
         /// <summary>
-        /// Delete article by id
+        /// Delete item by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //Task<bool> DeleteArticleAsync(int id);
+        //Task<bool> DeleteitemAsync(int id);
 
         /// <summary>
         /// Get item list 
@@ -41,6 +41,6 @@ namespace HackerService.BLL.Contracts
         /// <param name="pageNumber"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        Task<IEnumerable<News.News>> GetNewsListAsync();
+        Task<IEnumerable<News.News>> GetNewsListAsync(int apiRoute);
     }
 }

@@ -24,7 +24,7 @@ namespace HackerService.BLL.Tests.Helpers
             //.ReturnsAsync(true);
             moq.Setup(s => s.GetNewsAsync(It.IsAny<int>()))
                 .ReturnsAsync(fixture.Build<News>().Create());
-            moq.Setup(s => s.GetNewsListAsync())
+            moq.Setup(s => s.GetNewsListAsync(It.IsAny<int>()))
              .ReturnsAsync(fixture.Build<News>().CreateMany(20));
 
             return moq;
@@ -45,7 +45,7 @@ namespace HackerService.BLL.Tests.Helpers
 
             moq.Setup(s => s.GetNewsAsync(It.IsAny<int>()))
                 .ReturnsAsync(newsEntity);
-            moq.Setup(s => s.GetNewsListAsync())
+            moq.Setup(s => s.GetNewsListAsync(It.IsAny<int>()))
              .ReturnsAsync(fixture.Build<NewsEntity>().CreateMany(20));
 
             return moq;

@@ -26,9 +26,9 @@ namespace HackerService.BLL
             return _mapper.Map<News>(item);
         }
 
-        public async Task<IEnumerable<News>> GetNewsListAsync()
+        public async Task<IEnumerable<News>> GetNewsListAsync(int apiRoute)
         {
-            var item = await HackerNewsRepo.GetNewsListAsync();
+            var item = await HackerNewsRepo.GetNewsListAsync(apiRoute);
             return _mapper.Map<IEnumerable<News>>(item);
         }
 

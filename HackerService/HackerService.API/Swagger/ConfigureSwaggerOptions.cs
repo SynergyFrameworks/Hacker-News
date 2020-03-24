@@ -30,14 +30,14 @@ namespace HackerService.API.Swagger
                 Description = "Web API by Aaron Prince",
                 Contact = new OpenApiContact()
                 {
-                    Name = "Hacker News Web API service",
+                    Name = "Github Hacker News",
                     Email = string.Empty,
                     Url = new Uri("https://github.com/HackerNews/API"),
                 },
                 License = new OpenApiLicense()
                 {
-                    Name = "Hacker News",
-                    Url = new Uri("https://github.com/HackerNews/API")
+                    Name = "Hacker News Web API Docs",
+                    Url = new Uri("https://hackernews.api-docs.io/v0/overview/introduction")
                 }
             };
 
