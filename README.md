@@ -1,6 +1,14 @@
 # Hacker News
 2 Projects  .NET CORE Angular & .NET CORE API
 
+1: OpenAPI C# .NET CORE 3.1 HACKER NEWS Service
+
+https://hackerserviceapi20200323192500.azurewebsites.net/swagger/index.html
+
+2: HACKER NEWS Angular Client
+
+URL TBD 
+
 IOC & DI Example
 
 References
