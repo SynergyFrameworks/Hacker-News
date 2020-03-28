@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HackerNewsService } from '../service/hackernews.service';
-import { Subject, BehaviorSubject, combineLatest, EMPTY } from 'rxjs';
+import { Subject, BehaviorSubject, EMPTY } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 
@@ -21,30 +21,13 @@ export class HackerNewsComponent implements OnInit {
 
 
 
-  news$ = this.hackerNewsService.hackerNews$
+  news$ = this.hackerNewsService.hackerNewsCached$
   .pipe(
     catchError(err => {
       this.errorMessageSubject.next(err);
       return EMPTY;
     })
   );
-
-
-
-  // news$ = combineLatest([
-  //   this.hackerNewsService.hackerNews$,
-  //   this.newsSelectedAction$
-  // ])
-  //   .pipe(
-  //     map(([news, selectedNewsId]) =>
-  //       news.filter(newsx =>
-  //         selectedNewsId ? newsx.id === selectedNewsId : true
-  //       )),
-  //     catchError(err => {
-  //       this.errorMessageSubject.next(err);
-  //       return EMPTY;
-  //     })
-  //   );
 
 
 

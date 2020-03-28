@@ -10,18 +10,15 @@ import { tap, catchError, shareReplay, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HackerNewsService {
-  //private hackerNewsServiceUrl = 'http://localhost:4000/api/v1/news?apiRoute=2';
+ // private hackerNewsServiceUrl = 'http://localhost:4000/api/v1/news?apiRoute=2';
   private hackerNewsServiceUrl = 'https://hackerserviceapi20200323192500.azurewebsites.net/api/v1/news?apiRoute=2';
 
-  hackerNews$ = this.http.get<HackerNews[]>(this.hackerNewsServiceUrl)
+  hackerNewsCached$ = this.http.get<HackerNews[]>(this.hackerNewsServiceUrl)
     .pipe(
       tap(data => console.log('news', JSON.stringify(data))),
       shareReplay(1),
       catchError(this.handleError)
     );
-
-    private newsSelectedSubject = new BehaviorSubject<number>(0);
-    newsSelectedAction$ = this.newsSelectedSubject.asObservable();
 
     news$  = this.http.get<HackerNews[]>(this.hackerNewsServiceUrl)
     .pipe(
@@ -29,6 +26,21 @@ export class HackerNewsService {
       catchError(this.handleError)
     );
 
+    private newsSelectedSubject = new BehaviorSubject<number>(0);
+    newsSelectedAction$ = this.newsSelectedSubject.asObservable();
+
+  selectedNews$ = combineLatest([
+    this.hackerNewsCached$,
+    this.newsSelectedAction$
+  ])
+    .pipe(
+      map(([news, selectedNewsId]) =>
+        news.filter(newsx =>
+          selectedNewsId ? newsx.id === selectedNewsId : true
+        )),
+        tap(news => console.log('selectedNews', news)),
+        shareReplay(1)
+    );
 
     // newsWithSearch$ = combineLatest([
     // this.news$,
