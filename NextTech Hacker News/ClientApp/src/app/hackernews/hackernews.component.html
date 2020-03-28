@@ -10,7 +10,7 @@
   </thead>
   <tbody >
     <tr scope="row" *ngFor="let item of news">
-      <td (click)="onSelected($event.target.value)">{{ item.id }}</td>
+      <td ><a [routerLink]="['news-item', item.id]" (click)="onSelected($event.target.value)">{{ item.id }}</a></td>
       <td>{{ item.title }}</td>
       <td>{{ item.text | slice:0:200 }}</td>
       <td>{{ item.type }}</td>

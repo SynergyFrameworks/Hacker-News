@@ -30,7 +30,8 @@ import { NewsItemComponent } from './hackernews/news-item/news-item.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'hackernews', component: HackerNewsComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'hackernews/news-item/:id', component: NewsItemComponent },
+      { path: 'fetch-data', component: FetchDataComponent }
     ])
   ],
   providers: [],
