@@ -1,4 +1,4 @@
-# Hacker News Service Down 3/28 2PM Preventing Completion of Sample
+# Hacker News Down/Blocked 3/28 2PM Preventing Completion of Sample
 <h3>2 Projects  .NET CORE Angular & .NET CORE API</h3>
 
 <h2> 1: OpenAPI C# .NET CORE 3.1 HACKER NEWS Service </h2>
