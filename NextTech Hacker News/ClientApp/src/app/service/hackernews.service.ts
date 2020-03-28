@@ -10,7 +10,7 @@ import { tap, catchError, shareReplay, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HackerNewsService {
-  private hackerNewsServiceUrl = 'api/news';
+  private hackerNewsServiceUrl = 'https://hackerserviceapi20200323192500.azurewebsites.net/api/v1/news?apiRoute=2';
 
   hackerNews$ = this.http.get<HackerNews[]>(this.hackerNewsServiceUrl)
     .pipe(
@@ -31,7 +31,7 @@ export class HackerNewsService {
 
     // newsWithSearch$ = combineLatest([
     // this.news$,
-    //  this.newshackerNews$
+    //  this.hackerNews$
     // ]).pipe(
     //   map(([news, search]) =>
     //     news.map(news => ({

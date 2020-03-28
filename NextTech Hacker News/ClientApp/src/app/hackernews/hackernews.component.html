@@ -1,4 +1,4 @@
-<table class="table"  >  <!-- *ngIf="news$ | async as news" -->
+<table class="table"  *ngIf="news$ | async as news">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -9,13 +9,13 @@
     </tr>
   </thead>
   <tbody >
-<!--     <tr>
-      <th scope="row" *ngFor="let new of news">{{ counter }}</th>
-      <td>{{ new.id }}</td>
-      <td>{{ new.title }}</td>
-      <td>{{ new.text }}</td>
-      <td>{{ new.url }}</td>
-    </tr> -->
+     <tr>
+      <th scope="row" *ngFor="let item of news">{{ counter }}</th>
+      <td>{{ item.id }}</td>
+      <td>{{ item.title }}</td>
+      <td>{{ item.text }}</td>
+      <td>{{ item.url }}</td>
+    </tr>
 
     <!--  Temp Data  -->
     <tr>

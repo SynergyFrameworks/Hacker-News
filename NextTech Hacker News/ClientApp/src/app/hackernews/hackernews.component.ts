@@ -11,7 +11,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class HackerNewsComponent implements OnInit {
 
-  pageTitle = 'Hacker News List';
+  pageTitle = 'Hacker News';
   private errorMessageSubject = new Subject<string>();
   errorMessage$ = this.errorMessageSubject.asObservable();
 
