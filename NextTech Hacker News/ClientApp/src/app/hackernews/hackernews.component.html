@@ -14,7 +14,7 @@
       <td>{{ item.title }}</td>
       <td>{{ item.text | slice:0:200 }}</td>
       <td>{{ item.type }}</td>
-      <td><a href="{{ item.url }}" target="_blank">{{ item.url }}</a></td>
+      <td><a href="{{ item.url }}" target="_blank">{{ item.url | slice:0:60}}</a></td>
     </tr>
   </tbody>
 </table>
