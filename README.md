@@ -5,7 +5,7 @@
 
 https://hackerserviceapi20200323192500.azurewebsites.net/swagger/
 
-<h2> 2: HACKER NEWS Angular Client: NOT COMPLETED  </h2>
+<h3> 2: HACKER NEWS Angular Client: Search Filtering / Paging / Item Selection NOT COMPLETED  </h3>
 
 https://hackernewsclient20200324083849.azurewebsites.net/
 
