@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { HackerNewsComponent } from './hackernews/hackernews.component';
-
+import { HackerFilterPipe } from './Share/hacker-filter.pipe';
+import { NewsItemComponent } from './hackernews/news-item/news-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,9 @@ import { HackerNewsComponent } from './hackernews/hackernews.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    HackerNewsComponent
+    HackerNewsComponent,
+    NewsItemComponent,
+    HackerFilterPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
