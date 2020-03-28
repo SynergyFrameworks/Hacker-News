@@ -10,8 +10,8 @@ import { tap, catchError, shareReplay, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HackerNewsService {
- // private hackerNewsServiceUrl = 'http://localhost:4000/api/v1/news?apiRoute=2';
-  private hackerNewsServiceUrl = 'https://hackerserviceapi20200323192500.azurewebsites.net/api/v1/news?apiRoute=2';
+    private hackerNewsServiceUrl = 'http://localhost:4000/api/v1/news?apiRoute=2';
+  //private hackerNewsServiceUrl = 'https://hackerserviceapi20200323192500.azurewebsites.net/api/v1/news?apiRoute=2';
 
   hackerNewsCached$ = this.http.get<HackerNews[]>(this.hackerNewsServiceUrl)
     .pipe(

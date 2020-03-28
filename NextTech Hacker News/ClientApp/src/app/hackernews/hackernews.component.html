@@ -4,14 +4,16 @@
       <th scope="col">id</th>
       <th scope="col">title</th>
       <th scope="col">text</th>
+      <th scope="col">type</th>
       <th scope="col">url</th>
     </tr>
   </thead>
   <tbody >
     <tr scope="row" *ngFor="let item of news">
-      <td>{{ item.id }}</td>
+      <td (click)="onSelected($event.target.value)">{{ item.id }}</td>
       <td>{{ item.title }}</td>
-      <td>{{ item.text }}</td>
+      <td>{{ item.text | slice:0:200 }}</td>
+      <td>{{ item.type }}</td>
       <td><a href="{{ item.url }}" target="_blank">{{ item.url }}</a></td>
     </tr>
   </tbody>
