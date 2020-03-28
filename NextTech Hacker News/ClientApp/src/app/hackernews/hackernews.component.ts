@@ -16,22 +16,35 @@ export class HackerNewsComponent implements OnInit {
   errorMessage$ = this.errorMessageSubject.asObservable();
 
   private newsSelectedSubject = new BehaviorSubject<number>(0);
-  newSelectedAction$ = this.newsSelectedSubject.asObservable();
-    counter: number;
-  news$ = combineLatest([
-    this.hackerNewsService.hackerNews$,
-    this.newSelectedAction$
-  ])
-    .pipe(
-      map(([news, selectedNewsId]) =>
-        news.filter(newsx =>
-          selectedNewsId ? newsx.id === selectedNewsId : true
-        )),
-      catchError(err => {
-        this.errorMessageSubject.next(err);
-        return EMPTY;
-      })
-    );
+  newsSelectedAction$ = this.newsSelectedSubject.asObservable();
+  counter: number;
+
+
+
+  news$ = this.hackerNewsService.hackerNews$
+  .pipe(
+    catchError(err => {
+      this.errorMessageSubject.next(err);
+      return EMPTY;
+    })
+  );
+
+
+
+  // news$ = combineLatest([
+  //   this.hackerNewsService.hackerNews$,
+  //   this.newsSelectedAction$
+  // ])
+  //   .pipe(
+  //     map(([news, selectedNewsId]) =>
+  //       news.filter(newsx =>
+  //         selectedNewsId ? newsx.id === selectedNewsId : true
+  //       )),
+  //     catchError(err => {
+  //       this.errorMessageSubject.next(err);
+  //       return EMPTY;
+  //     })
+  //   );
 
 
 

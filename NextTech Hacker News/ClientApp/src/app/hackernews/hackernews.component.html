@@ -1,7 +1,6 @@
 <table class="table"  *ngIf="news$ | async as news">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
       <th scope="col">id</th>
       <th scope="col">title</th>
       <th scope="col">text</th>
@@ -9,56 +8,11 @@
     </tr>
   </thead>
   <tbody >
-  <!--  <tr scope="row" *ngFor="let item of news">
-      <th>{{ counter }}</th>
-    <td>{{ item.id }}</td>
+    <tr scope="row" *ngFor="let item of news">
+      <td>{{ item.id }}</td>
       <td>{{ item.title }}</td>
       <td>{{ item.text }}</td>
-      <td>{{ item.url }}</td>
-    </tr>-->
-
-    <!--  Temp Data  -->
-    <tr>
-      <th scope="row">2</th>
-      <td>2583423</td>
-      <td>news Article One</td>
-      <td>Content</td>
-      <td>http://google.com</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>286425</td>
-      <td>news Article One</td>
-      <td>Content</td>
-      <td>http://google.com</td>
-    </tr>
-    <tr>
-      <th scope="row">4</th>
-      <td>27836</td>
-      <td>news Article One</td>
-      <td>Content</td>
-      <td>http://google.com</td>
-    </tr>
-    <tr>
-      <th scope="row">5</th>
-      <td>1343573</td>
-      <td>news Article One</td>
-      <td>Content</td>
-      <td>http://google.com</td>
-    </tr>
-    <tr>
-      <th scope="row">6</th>
-      <td>4657232</td>
-      <td>news Article One</td>
-      <td>Content</td>
-      <td>http://google.com</td>
-    </tr>
-    <tr>
-      <th scope="row">7</th>
-      <td>25667878</td>
-      <td>news Article One</td>
-      <td>Content</td>
-      <td>http://google.com</td>
+      <td><a href="{{ item.url }}" target="_blank">{{ item.url }}</a></td>
     </tr>
   </tbody>
 </table>
